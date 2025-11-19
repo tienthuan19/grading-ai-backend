@@ -1,3 +1,5 @@
+const userAuthRoute = require('./routes/user.route')
+
 module.exports = function (app) {
-    require('./routes/user.route')(app);
+    app.use('/v1/auth/users', userAuthRoute);
 };

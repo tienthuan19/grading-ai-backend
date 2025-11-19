@@ -2,8 +2,14 @@
   "name": "grading-ai-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "model:create": "npx sequelize-cli model:generate --models-path app/models --migrations-path app/migrations",
+    "migrate:create": "npx sequelize-cli migration:generate --migrations-path app/migrations",
+    "migrate": "npx sequelize-cli db:migrate --migrations-path app/migrations --config app/config/config.json",
+    "migrate:undo": "npx sequelize-cli db:migrate:undo --migrations-path app/migrations --config app/config/config.json",
+    "seed:create": "npx sequelize-cli seed:generate --seeders-path app/seeders",
+    "seed": "npx sequelize-cli db:seed:all --seeders-path app/seeders --config app/config/config.json",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "dev": "nodemon server.js"
@@ -20,12 +26,17 @@
   },
   "homepage": "https://github.com/tienthuan19/grading-ai-backend#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^2.2.0",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "method-override": "^3.0.0",
     "mysql2": "^3.15.0",
     "sequelize": "^6.37.7"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "sequelize-cli": "^6.6.3"
   }
 }
